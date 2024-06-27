@@ -1,6 +1,3 @@
-#ifndef modules_h
-#define modules_h
+#pragma once
 
-#include "./motion/core.h"
-
-#endif
+#include "./motion/core_impls/h_bridge_core.h"

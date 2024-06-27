@@ -1,3 +1,4 @@
+// MARVIN
 // Magico Altamente Revoltado com Vigaristas Ignorantes Neandertalenses
 #include <Ultrasonic.h>
 
@@ -10,7 +11,7 @@ Ultrasonic ultrasonic(TRIG_PIN, ECHO_PIN);
 void setup() {
   Serial.begin(9600);
 
-  motion.init(motorLeftPins, motorRightPins);
+  motion.init(motor1Pins, motor2Pins);
   // caso os motores estejam invertidos, invertam a ordem dos parâmetros
 }
 
