@@ -1,22 +1,47 @@
+// Magico Altamente Revoltado com Vigaristas Ignorantes Neandertalenses
 #include <Ultrasonic.h>
 
-#define TRIG_PIN 2
-#define ECHO_PIN 3
+#include "./env.h"
+#include "./modules/modules.h"
 
-#define DETECT_DIST 5
-
+MC motion;
 Ultrasonic ultrasonic(TRIG_PIN, ECHO_PIN);
 
 void setup() {
   Serial.begin(9600);
+
+  motion.init(motorLeftPins, motorRightPins);
+  // caso os motores estejam invertidos, invertam a ordem dos parâmetros
 }
 
 void loop() {
+  motion.speed(80);
+  motion.forward();
+
   int distance = ultrasonic.read();
 
   Serial.print("Distancia: ");
-  Serial.print(distancia);
+  Serial.print(distance);
   Serial.println(" cm");
 
-  delay(100);
+  if (distance <= DETECT_DIST) {
+    motion.stop();
+    delay(SMALL_DELAY);
+
+    motion.to_left();
+    motion.forward();
+    delay(SMALL_DELAY);
+
+    motion.to_right();
+    motion.forward();
+    delay(SMALL_DELAY);
+
+    motion.to_right();
+    motion.forward();
+    delay(SMALL_DELAY);
+
+    motion.to_left();
+    motion.forward();
+    delay(SMALL_DELAY);
+  }
 }
