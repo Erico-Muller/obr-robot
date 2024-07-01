@@ -3,6 +3,8 @@
 #include "../core.h"
 #include "../motor_impls/h_bridge_motor.h"
 
+#define ROTATE_DELAY 500
+
 class H_Bridge_MC : public MC {
 private:
   H_Bridge_Motor motorL, motorR;
@@ -48,12 +50,12 @@ public:
   void rotate_to_left() override {
     motorL.backward();
     motorR.forward();
-    delay(500);
+    delay(ROTATE_DELAY);
   }
 
   void rotate_to_right() override {
     motorL.forward();
     motorR.backward();
-    delay(500);
+    delay(ROTATE_DELAY);
   }
 };
