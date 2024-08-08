@@ -17,8 +17,12 @@ public:
     Serial.println("Robot initialized");
   }
 
-  void set_speed(int speed) override {
-    motorL.set_speed(speed);
+  void set_speed(int speed, bool x = false) {
+    if (x) {
+      motorL.set_speed(speed + 14);
+    } else {
+      motorL.set_speed(speed);
+    }
     motorR.set_speed(speed);
   }
 
