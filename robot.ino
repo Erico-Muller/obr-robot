@@ -25,7 +25,7 @@ void setup() {
 
 void loop() {
   for (short i = 0; i < irQty; i++) {
-    d[i] = digitalRead(irPins[i]);
+    ir[i] = digitalRead(irPins[i]);
   }
 
   int distance = ultrasonic.read();
